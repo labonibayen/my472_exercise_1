@@ -386,6 +386,30 @@ head(new_data)</code></pre>
 ## 4          4.6         3.1          1.5         0.2  setosa
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<pre class="r"><code>convert_col_vaules_upper &lt;- function(data_new){
+  
+  data_new %&gt;%
+    
+#### this function does four things:
+    
+    # identified all columns that are factors
+    # converts the values in these columns to chars
+    # then it converts these chars to uppercase
+    # then turns these columns back into a factor
+    
+    mutate(across(where(is.factor), ~ factor(toupper(as.character(.)))))
+}
+
+new_data &lt;- convert_col_vaules_upper(iris)
+
+head(new_data)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  SETOSA
+## 2          4.9         3.0          1.4         0.2  SETOSA
+## 3          4.7         3.2          1.3         0.2  SETOSA
+## 4          4.6         3.1          1.5         0.2  SETOSA
+## 5          5.0         3.6          1.4         0.2  SETOSA
+## 6          5.4         3.9          1.7         0.4  SETOSA</code></pre>
 
 
 
