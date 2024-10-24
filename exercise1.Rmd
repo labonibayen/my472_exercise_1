@@ -1,0 +1,36 @@
+---
+title: "Exercise 1, Problem Set 1"
+output: html_document
+date: "2024-10-24"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE)
+```
+
+This is Exercise 1 from MY472 Problem Set 1. This file defines a function that takes and input dataframe, "data," and renames all columns to uppercase. Then the function replaces any "." characters in the column names with "_."
+
+```{r convert_to_upper}
+
+#load libraries
+library(dplyr)
+library(tidyverse)
+
+#define function that converts column names to uppercase and replace "." with "_" in column names
+convert_to_upper <- function(data){
+  data %>%
+    
+    #make all column names upper case
+    rename_with(~ toupper(.)) %>% 
+    
+    #replace all "." in columns with "_"
+    rename_with(~ str_replace_all(., "\\.", "_"))
+}
+
+#apply this function to the pre-loaded iris database
+new_data<-convert_to_upper(iris)
+
+#view new data 
+head(new_data)
+
+```
