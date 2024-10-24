@@ -34,3 +34,26 @@ new_data<-convert_to_upper(iris)
 head(new_data)
 
 ```
+
+
+```{r second_function}
+
+convert_col_vaules_upper <- function(data){
+  
+  data %>%
+    
+#### this function does four things:
+    
+    # identified all columns that are factors
+    # converts the values in these columns to chars
+    # then it converts these chars to uppercase
+    # then turns these columns back into a factor
+    
+    mutate(across(where(is.factor), ~ factor(toupper(as.character(.)))))
+}
+
+new_data <- convert_col_vaules_upper(iris)
+
+head(new_data)
+
+```
