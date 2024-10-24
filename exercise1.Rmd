@@ -38,9 +38,9 @@ head(new_data)
 
 ```{r second_function}
 
-convert_col_vaules_upper <- function(new_data){
+convert_col_vaules_upper <- function(data_new){
   
-  new_data %>%
+  data_new %>%
     
 #### this function does four things:
     
